@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Services", "Organizer.Services\Organizer.Services.csproj", "{EB0E8828-E81C-4A29-95F5-27531B2CAC83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Data", "Organizer.Data\Organizer.Data.csproj", "{110ABA64-A8FB-4EBE-83C9-A43357F88371}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB0E8828-E81C-4A29-95F5-27531B2CAC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0E8828-E81C-4A29-95F5-27531B2CAC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0E8828-E81C-4A29-95F5-27531B2CAC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0E8828-E81C-4A29-95F5-27531B2CAC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110ABA64-A8FB-4EBE-83C9-A43357F88371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110ABA64-A8FB-4EBE-83C9-A43357F88371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110ABA64-A8FB-4EBE-83C9-A43357F88371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110ABA64-A8FB-4EBE-83C9-A43357F88371}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

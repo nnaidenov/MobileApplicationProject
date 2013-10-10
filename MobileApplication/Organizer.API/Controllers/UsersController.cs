@@ -12,10 +12,9 @@ using System.Web.Http.ValueProviders;
 
 namespace Organizer.API.Controllers
 {
-    public class UsersController : BaseApiController
+    public class UsersController : BaseController
     {
-        [HttpPost]
-        [ActionName("register")]
+        [HttpPost("users/register")]
         public HttpResponseMessage RegisterUser(UserRegisterModel model)
         {
             var responseMsg = this.ExceptionHandler(
@@ -64,8 +63,7 @@ namespace Organizer.API.Controllers
             return responseMsg;
         }
 
-        [HttpPost]
-        [ActionName("login")]
+        [HttpPost("users/login")]
         public HttpResponseMessage LoginUser(UserLoginModel model)
         {
             var responseMsg = this.ExceptionHandler(
@@ -102,8 +100,7 @@ namespace Organizer.API.Controllers
             return responseMsg;
         }
 
-        [HttpPut]
-        [ActionName("logout")]
+        [HttpPut("users/logout")]
         public HttpResponseMessage LogoutUser(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {

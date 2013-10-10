@@ -10,7 +10,8 @@ namespace Organazer.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(OrganizerDbContex context)
@@ -27,11 +28,6 @@ namespace Organazer.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            var newUser = new User { Username = "test"};
-
-            context.Users.Add(newUser);
-            context.SaveChanges();
         }
     }
 }
