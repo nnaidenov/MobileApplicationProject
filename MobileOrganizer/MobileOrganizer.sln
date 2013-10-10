@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileOrganizer.Data", "MobileOrganizer.Data\MobileOrganizer.Data.csproj", "{7262F499-FAFF-447C-B7DB-69CC528F315D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileOrganizer.Models", "MobileOrganizer.Models\MobileOrganizer.Models.csproj", "{F1AE6842-BE34-4704-8949-C90AEBB4C3C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileOrganizer.Services", "MobileOrganizer.Services\MobileOrganizer.Services.csproj", "{FB42E7AF-EF60-487A-8121-6B3DD2C007D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7262F499-FAFF-447C-B7DB-69CC528F315D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7262F499-FAFF-447C-B7DB-69CC528F315D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7262F499-FAFF-447C-B7DB-69CC528F315D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7262F499-FAFF-447C-B7DB-69CC528F315D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1AE6842-BE34-4704-8949-C90AEBB4C3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AE6842-BE34-4704-8949-C90AEBB4C3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AE6842-BE34-4704-8949-C90AEBB4C3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AE6842-BE34-4704-8949-C90AEBB4C3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB42E7AF-EF60-487A-8121-6B3DD2C007D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB42E7AF-EF60-487A-8121-6B3DD2C007D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB42E7AF-EF60-487A-8121-6B3DD2C007D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB42E7AF-EF60-487A-8121-6B3DD2C007D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
