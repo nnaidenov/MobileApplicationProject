@@ -11,7 +11,7 @@ namespace Organazer.Data
     public class OrganizerDbContex : DbContext 
     {
         public OrganizerDbContex() :
-            base("OrganizerDbb")
+            base("MobileDb")
         {
 
         }
