@@ -12,7 +12,7 @@ namespace Organizer.Models
 
         public string Username { get; set; }
 
-        public string Authcode { get; set; }
+        public string AuthCode { get; set; }
 
         public string SessionKey { get; set; }
 
