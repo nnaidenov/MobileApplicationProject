@@ -39,7 +39,7 @@ namespace MobileOrganizer.Services.Controllers
                 this.Data.Todos.Add(newToDo);
                 this.Data.SaveChanges();
 
-                var response = this.Request.CreateResponse(HttpStatusCode.Created, newToDo);
+                var response = this.Request.CreateResponse(HttpStatusCode.Created);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = newToDo.Id }));
 
                 return response;
