@@ -47,5 +47,33 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
+
+        [HttpGet]
+        public IQueryable<ToDoListModel> GetByDate(DateTime date,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                    var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                    if (user == null)
+                    {
+                        throw new InvalidOperationException("Invalid username or password");
+                    }
+
+                    var todoes = this.Data.Todos.Where(t => t.Date == date && t.OwnerId == user.Id).OrderByDescending(t => t.Priority);
+
+                var models =
+                    (from t in todoes
+                     select new ToDoListModel
+                     {
+                         Title = t.Title
+                     });
+
+                return models;
+            });
+
+            return responseMsg;
+        }
     }
 }
