@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MobileOrganizer.Services.Models
 {
-        [DataContract]
+    [DataContract]
     public class UserLoggedModel
     {
         [DataMember(Name = "username")]
