@@ -36,14 +36,17 @@ namespace MobileOrganizer.Services.Controllers
                     Title = model.Title
                 };
 
-                var images = new List<Image>();
-                foreach (var image in model.Images)
+                if (model.Images != null)
                 {
-                    var newImage = new Image { Path = image, NoteId = newNote.Id, Note = newNote };
-                    images.Add(newImage);
-                }
+                    var images = new List<Image>();
+                    foreach (var image in model.Images)
+                    {
+                        var newImage = new Image { Path = image, NoteId = newNote.Id, Note = newNote };
+                        images.Add(newImage);
+                    }
 
-                newNote.ImagesUrls = images;
+                    newNote.ImagesUrls = images;
+                }
 
                 this.Data.Notes.Add(newNote);
                 this.Data.SaveChanges();
