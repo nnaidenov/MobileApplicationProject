@@ -10,6 +10,12 @@ namespace MobileOrganizer.Services
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
+              name: "Stuffes",
+              routeTemplate: "api/{controller}/{action}/{day}/{mounth}/{year}",
+              defaults: new { year = RouteParameter.Optional }
+          );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }

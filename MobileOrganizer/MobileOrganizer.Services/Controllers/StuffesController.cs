@@ -61,7 +61,58 @@ namespace MobileOrganizer.Services.Controllers
                     stuffes.Add(eventModel);
                 }
 
-                return stuffes.OrderBy(s=>s.Year).ThenBy(s=>s.Mount).ThenBy(s=>s.Day).ToList();
+                return stuffes.OrderBy(s => s.Year).ThenBy(s => s.Mount).ThenBy(s => s.Day).ToList();
+            });
+
+            return responseMsg;
+        }
+
+        [HttpGet]
+        [ActionName("byDate")]
+        public ICollection<StuffListModel> ByDate(int day, int mounth, int year,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+                DateTime searchDay = new DateTime(year, mounth, day);
+                var todoes = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date == searchDay).OrderBy(t => t.Priority);
+                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate == searchDay).OrderBy(t => t.Priority);
+
+                var modelsTodo =
+                    (from t in todoes
+                     select new StuffListModel
+                     {
+                         Title = t.Title,
+                         Type = "todo"
+                     });
+
+                var modelsEvents =
+                    (from e in events
+                     select new StuffListModel
+                     {
+                         Title = e.Title,
+                         Type = "event"
+                     });
+
+                var stuffes = new List<StuffListModel>();
+
+                foreach (var todo in modelsTodo)
+                {
+                    stuffes.Add(todo);
+                }
+
+                foreach (var eventModel in modelsEvents)
+                {
+                    stuffes.Add(eventModel);
+                }
+
+                return stuffes;
             });
 
             return responseMsg;

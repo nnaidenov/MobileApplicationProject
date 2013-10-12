@@ -7,9 +7,12 @@ using System.Web;
 namespace MobileOrganizer.Services.Models
 {
     [DataContract]
-    public class SearchTodoByDateModel
+    public class StuffListModel
     {
-        [DataMember(Name = "forDate")]
-        public DateTime ForDate { get; set; }
+        [DataMember(Name = "title")]
+        public string Title { get; set; }
+
+        [DataMember(Name = "type")]
+        public string Type { get; set; }
     }
 }
