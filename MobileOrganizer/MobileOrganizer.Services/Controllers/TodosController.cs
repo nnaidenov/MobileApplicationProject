@@ -55,13 +55,13 @@ namespace MobileOrganizer.Services.Controllers
             var responseMsg = ExecuteOperationOrHandleExceptions(
             () =>
             {
-                    var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
-                    if (user == null)
-                    {
-                        throw new InvalidOperationException("Invalid username or password");
-                    }
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
 
-                    var todoes = this.Data.Todos.Where(t => t.Date == date && t.OwnerId == user.Id).OrderByDescending(t => t.Priority);
+                var todoes = this.Data.Todos.Where(t => t.Date == date && t.OwnerId == user.Id).OrderByDescending(t => t.Priority);
 
                 var models =
                     (from t in todoes
@@ -71,6 +71,35 @@ namespace MobileOrganizer.Services.Controllers
                      });
 
                 return models;
+            });
+
+            return responseMsg;
+        }
+
+        [HttpGet]
+        [ActionName("getById")]
+        public ToDoModel GetById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var todo = this.Data.Todos.Find(id);
+
+                var model = new ToDoModel
+                {
+                    Title = todo.Title,
+                    Description = todo.Description,
+                    Date = todo.Date
+                };
+
+                return model;
             });
 
             return responseMsg;
