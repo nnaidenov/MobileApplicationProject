@@ -50,7 +50,7 @@ namespace MobileOrganizer.Services.Controllers
 
         [HttpGet]
         [ActionName("all")]
-        public ICollection<StuffListModel> All(int day, int mounth, int year,
+        public ICollection<StuffListModel> All(
              [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {
             var responseMsg = ExecuteOperationOrHandleExceptions(
@@ -61,9 +61,8 @@ namespace MobileOrganizer.Services.Controllers
                 {
                     throw new InvalidOperationException("Invalid username or password");
                 }
-                DateTime searchDay = new DateTime(year, mounth, day);
 
-                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate >= searchDay).OrderBy(t => t.Priority);
+                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate >= DateTime.Now).OrderBy(t => t.Priority);
 
                 var modelsEvents =
                     (from e in events
