@@ -174,7 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CreateToDoModel.cs" />
-    <Compile Include="Models\SearchTodoByDateModel.cs" />
+    <Compile Include="Models\StuffListModel.cs" />
     <Compile Include="Models\StuffModel.cs" />
     <Compile Include="Models\ToDoListModel.cs" />
     <Compile Include="Models\UserLoggedModel.cs" />
