@@ -14,5 +14,8 @@ namespace MobileOrganizer.Services.Models
 
         [DataMember(Name = "type")]
         public string Type { get; set; }
+
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
     }
 }

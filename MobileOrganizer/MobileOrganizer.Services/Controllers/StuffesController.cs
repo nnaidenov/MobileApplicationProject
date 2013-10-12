@@ -88,6 +88,7 @@ namespace MobileOrganizer.Services.Controllers
                     (from t in todoes
                      select new StuffListModel
                      {
+                         Id = t.Id,
                          Title = t.Title,
                          Type = "todo"
                      });
@@ -96,6 +97,7 @@ namespace MobileOrganizer.Services.Controllers
                     (from e in events
                      select new StuffListModel
                      {
+                         Id = e.Id,
                          Title = e.Title,
                          Type = "event"
                      });
