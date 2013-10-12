@@ -14,15 +14,15 @@ namespace MobileOrganizer.Models
 
         public string Text { get; set; }
 
-        public ICollection<string> ImagesUrls { get; set; }
-
         public int OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
 
+        public virtual ICollection<Image> ImagesUrls { get; set; }
+
         public Note()
         {
-            this.ImagesUrls = new HashSet<string>();
+            this.ImagesUrls = new HashSet<Image>();
         }
     }
 }

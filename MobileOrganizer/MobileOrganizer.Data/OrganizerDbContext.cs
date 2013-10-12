@@ -25,5 +25,7 @@ namespace MobileOrganizer.Data
         public DbSet<Todo> Todos { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Image> Images { get; set; }
     }
 }
