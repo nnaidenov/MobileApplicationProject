@@ -165,6 +165,7 @@
     <Compile Include="Attributes\HeaderValueProviderFactory.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\StuffesController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateEventModel.cs" />
     <Compile Include="Models\CreateNoteModel.cs" />
     <Compile Include="Models\CreateToDoModel.cs" />
     <Compile Include="Models\StuffListModel.cs" />
