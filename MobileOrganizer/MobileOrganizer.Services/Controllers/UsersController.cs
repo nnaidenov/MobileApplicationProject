@@ -21,16 +21,13 @@ namespace MobileOrganizer.Services.Controllers
             var responseMsg = this.ExecuteOperationOrHandleExceptions(
                  () =>
                  {
-                     UserDataPersister.ValidateUsername(model.Username);
                      UserDataPersister.ValidateAuthCode(model.AuthCode);
                      //TODO: Validate Email
                      //UserDataPersister.ValidateEmail(model.Email);
 
-                     var usernameToLower = model.Username.ToLower();
-
                      var users = this.Data.Users;
                      var user = users.FirstOrDefault(
-                           usr => usr.Username == usernameToLower || usr.Email == model.Email);
+                           usr => usr.Email == model.Email);
 
                      if (user != null)
                      {
@@ -39,7 +36,6 @@ namespace MobileOrganizer.Services.Controllers
 
                      var newUser = new User
                      {
-                         Username = usernameToLower,
                          Email = model.Email,
                          AuthCode = model.AuthCode
                      };
@@ -52,7 +48,7 @@ namespace MobileOrganizer.Services.Controllers
                      this.Data.SaveChanges();
                      var loggedModel = new UserLoggedModel
                      {
-                         Username = userInDb.Username,
+                         Email = userInDb.Email,
                          SessionKey = userInDb.SessionKey
                      };
 
@@ -72,14 +68,12 @@ namespace MobileOrganizer.Services.Controllers
             var responseMsg = this.ExecuteOperationOrHandleExceptions(
                  () =>
                  {
-                     UserDataPersister.ValidateUsername(model.Username);
+                     //UserDataPersister.ValidateUsername(model.Username);
                      UserDataPersister.ValidateAuthCode(model.AuthCode);
-
-                     var usernameToLower = model.Username.ToLower();
 
                      var users = this.Data.Users;
                      var user = users.FirstOrDefault(
-                           usr => usr.Username == usernameToLower && usr.AuthCode == model.AuthCode);
+                           usr => usr.Email == model.Email && usr.AuthCode == model.AuthCode);
 
                      if (user == null)
                      {
@@ -91,7 +85,7 @@ namespace MobileOrganizer.Services.Controllers
 
                      var loggedModel = new UserLoggedModel
                      {
-                         Username = user.Username,
+                         Email = user.Email,
                          SessionKey = user.SessionKey
                      };
 

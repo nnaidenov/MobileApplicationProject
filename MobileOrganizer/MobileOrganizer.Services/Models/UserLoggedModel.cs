@@ -9,8 +9,8 @@ namespace MobileOrganizer.Services.Models
     [DataContract]
     public class UserLoggedModel
     {
-        [DataMember(Name = "username")]
-        public string Username { get; set; }
+        [DataMember(Name = "email")]
+        public string Email { get; set; }
 
         [DataMember(Name = "sessionKey")]
         public string SessionKey { get; set; }

@@ -10,8 +10,6 @@ namespace MobileOrganizer.Models
     {
         public int Id { get; set; }
 
-        public string Username { get; set; }
-
         public string AuthCode { get; set; }
 
         public string SessionKey { get; set; }
