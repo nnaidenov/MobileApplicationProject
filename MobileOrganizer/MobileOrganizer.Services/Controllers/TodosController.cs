@@ -126,6 +126,7 @@ namespace MobileOrganizer.Services.Controllers
 
                 var model = new ToDoModel
                 {
+                    Id = todo.Id,
                     Title = todo.Title,
                     Description = todo.Description,
                     Date = todo.Date,
