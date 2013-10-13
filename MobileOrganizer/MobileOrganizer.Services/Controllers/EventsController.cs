@@ -78,5 +78,35 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
+
+        [HttpGet]
+        [ActionName("getById")]
+        public EventModel GetById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var singleEvent = this.Data.Events.Find(id);
+
+                var model = new EventModel
+                {
+                    Title = singleEvent.Title,
+                    Description = singleEvent.Description,
+                    StartDate = singleEvent.StartDate,
+                    EnddDate = singleEvent.EndDate
+                };
+
+                return model;
+            });
+
+            return responseMsg;
+        }
     }
 }

@@ -178,6 +178,7 @@
     <Compile Include="Models\CreateEventModel.cs" />
     <Compile Include="Models\CreateNoteModel.cs" />
     <Compile Include="Models\CreateToDoModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\StuffListModel.cs" />
     <Compile Include="Models\StuffModel.cs" />
     <Compile Include="Models\ToDoListModel.cs" />
