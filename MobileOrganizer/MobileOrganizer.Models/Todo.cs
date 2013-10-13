@@ -16,7 +16,7 @@ namespace MobileOrganizer.Models
 
         public DateTime Date { get; set; }
 
-        public bool IsNotifyMode { get; set; }
+        public bool IsDone { get; set; }
 
         public Priority Priority { get; set; }
 

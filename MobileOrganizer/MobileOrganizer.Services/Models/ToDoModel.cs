@@ -12,5 +12,7 @@ namespace MobileOrganizer.Services.Models
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
+
+        public bool IsDone { get; set; }
     }
 }

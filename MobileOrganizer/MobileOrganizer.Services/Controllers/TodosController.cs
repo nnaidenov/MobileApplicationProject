@@ -33,7 +33,8 @@ namespace MobileOrganizer.Services.Controllers
                     Description = model.Description,
                     Owner = user,
                     OwnerId = user.Id,
-                    Title = model.Title
+                    Title = model.Title,
+                    IsDone = false
                 };
 
                 this.Data.Todos.Add(newToDo);
@@ -127,7 +128,8 @@ namespace MobileOrganizer.Services.Controllers
                 {
                     Title = todo.Title,
                     Description = todo.Description,
-                    Date = todo.Date
+                    Date = todo.Date,
+                    IsDone = todo.IsDone
                 };
 
                 return model;
