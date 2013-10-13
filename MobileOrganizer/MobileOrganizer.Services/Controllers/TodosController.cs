@@ -27,13 +27,6 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-                Category cat = this.Data.Categories.FirstOrDefault(c => c.Name == model.Category);
-
-                if (cat == null)
-                {
-                    var category = new Category { Name = model.Category};
-                    cat = category;
-                }
 
                 var newToDo = new Todo
                 {
@@ -42,8 +35,7 @@ namespace MobileOrganizer.Services.Controllers
                     Owner = user,
                     OwnerId = user.Id,
                     Title = model.Title,
-                    IsDone = false,
-                    Category = cat
+                    IsDone = false
                 };
 
                 this.Data.Todos.Add(newToDo);
