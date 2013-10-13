@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MobileOrganizer.Services.Models
 {
-    class ImageModel
+    public class ImageModel
     {
         public string Path { get; set; }
     }
