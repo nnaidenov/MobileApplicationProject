@@ -48,6 +48,18 @@ namespace MobileOrganizer.Services.Controllers
                     newNote.ImagesUrls = images;
                 }
 
+                if (model.Videos != null)
+                {
+                    var videos = new List<Video>();
+                    foreach (var video in model.Videos)
+                    {
+                        var newVideo = new Video { Path = video, NoteId = newNote.Id, Note = newNote };
+                        videos.Add(newVideo);
+                    }
+
+                    newNote.VideosUrls = videos;
+                }
+
                 this.Data.Notes.Add(newNote);
                 this.Data.SaveChanges();
 
