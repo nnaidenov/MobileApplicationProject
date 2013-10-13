@@ -167,6 +167,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\StuffesController.cs" />
     <Compile Include="Controllers\TodosController.cs" />
@@ -179,6 +180,8 @@
     <Compile Include="Models\CreateNoteModel.cs" />
     <Compile Include="Models\CreateToDoModel.cs" />
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\NoteModel.cs" />
+    <Compile Include="Models\NotesListModel.cs" />
     <Compile Include="Models\StuffListModel.cs" />
     <Compile Include="Models\StuffModel.cs" />
     <Compile Include="Models\ToDoListModel.cs" />

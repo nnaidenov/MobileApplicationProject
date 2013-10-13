@@ -98,7 +98,7 @@ namespace MobileOrganizer.Services.Controllers
                      {
                          Id = t.Id,
                          Title = t.Title,
-                         Type = "event"
+                         Type = "todo"
                      });
 
                 return modelsTodos.ToList();
