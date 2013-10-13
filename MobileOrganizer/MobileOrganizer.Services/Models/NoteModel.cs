@@ -14,5 +14,7 @@ namespace MobileOrganizer.Services.Models
         public IEnumerable<ImageModel> ImagesUrls { get; set; }
 
         public IEnumerable<VideoModel> VideosUrls { get; set; }
+
+        public int Id { get; set; }
     }
 }

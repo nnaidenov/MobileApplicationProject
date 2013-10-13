@@ -120,6 +120,7 @@ namespace MobileOrganizer.Services.Controllers
 
                 var model = new NoteModel
                 {
+                    Id = note.Id,
                     Title = note.Title,
                     Description = note.Text,
                     ImagesUrls = (from i in note.ImagesUrls
@@ -135,6 +136,29 @@ namespace MobileOrganizer.Services.Controllers
                 };
 
                 return model;
+            });
+
+            return responseMsg;
+        }
+
+        [HttpPost]
+        [ActionName("delete")]
+        public bool DeleteById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var note = this.Data.Notes.Find(id);
+                this.Data.Notes.Remove(note);
+
+                return true;
             });
 
             return responseMsg;

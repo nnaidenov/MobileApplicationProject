@@ -97,6 +97,7 @@ namespace MobileOrganizer.Services.Controllers
 
                 var model = new EventModel
                 {
+                    Id = singleEvent.Id,
                     Title = singleEvent.Title,
                     Description = singleEvent.Description,
                     StartDate = singleEvent.StartDate,
@@ -104,6 +105,29 @@ namespace MobileOrganizer.Services.Controllers
                 };
 
                 return model;
+            });
+
+            return responseMsg;
+        }
+
+        [HttpPost]
+        [ActionName("delete")]
+        public bool DeleteById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var eventM = this.Data.Events.Find(id);
+                this.Data.Events.Remove(eventM);
+
+                return true;
             });
 
             return responseMsg;

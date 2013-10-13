@@ -27,6 +27,14 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
+                Category cat = this.Data.Categories.FirstOrDefault(c => c.Name == model.Category);
+
+                if (cat == null)
+                {
+                    var category = new Category { Name = model.Category};
+                    cat = category;
+                }
+
                 var newToDo = new Todo
                 {
                     Date = model.Date,
@@ -34,7 +42,8 @@ namespace MobileOrganizer.Services.Controllers
                     Owner = user,
                     OwnerId = user.Id,
                     Title = model.Title,
-                    IsDone = false
+                    IsDone = false,
+                    Category = cat
                 };
 
                 this.Data.Todos.Add(newToDo);
@@ -62,7 +71,7 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-                var todoes = this.Data.Todos.Where(t => t.Date == date && t.OwnerId == user.Id).OrderByDescending(t => t.Priority);
+                var todoes = this.Data.Todos.Where(t => t.Date == date && t.OwnerId == user.Id);
 
                 var models =
                     (from t in todoes
@@ -91,7 +100,7 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-                var todos = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date >= DateTime.Now).OrderBy(t => t.Priority);
+                var todos = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date >= DateTime.Now);
 
                 var modelsTodos =
                     (from t in todos
@@ -139,7 +148,7 @@ namespace MobileOrganizer.Services.Controllers
             return responseMsg;
         }
 
-        [HttpGet]
+        [HttpPost]
         [ActionName("update")]
         public bool UpdateById(int id,
              [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
@@ -158,6 +167,29 @@ namespace MobileOrganizer.Services.Controllers
                 todo.IsDone = true;
                 this.Data.SaveChanges();
 
+                return true;
+            });
+
+            return responseMsg;
+        }
+
+        [HttpPost]
+        [ActionName("delete")]
+        public bool DeleteById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var todo = this.Data.Todos.Find(id);
+                this.Data.Todos.Remove(todo);
+               
                 return true;
             });
 

@@ -18,7 +18,7 @@ namespace MobileOrganizer.Models
 
         public bool IsDone { get; set; }
 
-        public Priority Priority { get; set; }
+        public Category Category { get; set; }
 
         public int OwnerId { get; set; }
 
