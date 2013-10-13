@@ -138,5 +138,30 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
+
+        [HttpGet]
+        [ActionName("update")]
+        public bool UpdateById(int id,
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var todo = this.Data.Todos.Find(id);
+
+                todo.IsDone = true;
+                this.Data.SaveChanges();
+
+                return true;
+            });
+
+            return responseMsg;
+        }
     }
 }
