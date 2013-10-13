@@ -189,7 +189,8 @@ namespace MobileOrganizer.Services.Controllers
 
                 var todo = this.Data.Todos.Find(id);
                 this.Data.Todos.Remove(todo);
-               
+                this.Data.SaveChanges();
+
                 return true;
             });
 

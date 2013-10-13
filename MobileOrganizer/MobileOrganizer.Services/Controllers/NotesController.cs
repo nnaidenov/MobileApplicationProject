@@ -157,6 +157,7 @@ namespace MobileOrganizer.Services.Controllers
 
                 var note = this.Data.Notes.Find(id);
                 this.Data.Notes.Remove(note);
+                this.Data.SaveChanges();
 
                 return true;
             });

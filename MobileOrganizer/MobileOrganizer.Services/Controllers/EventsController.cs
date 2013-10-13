@@ -126,6 +126,7 @@ namespace MobileOrganizer.Services.Controllers
 
                 var eventM = this.Data.Events.Find(id);
                 this.Data.Events.Remove(eventM);
+                this.Data.SaveChanges();
 
                 return true;
             });
