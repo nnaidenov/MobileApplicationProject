@@ -77,6 +77,37 @@ namespace MobileOrganizer.Services.Controllers
         }
 
         [HttpGet]
+        [ActionName("all")]
+        public ICollection<TodosListModel> All(
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                var todos = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date >= DateTime.Now).OrderBy(t => t.Priority);
+
+                var modelsTodos =
+                    (from t in todos
+                     select new TodosListModel
+                     {
+                         Id = t.Id,
+                         Title = t.Title,
+                         Type = "event"
+                     });
+
+                return modelsTodos.ToList();
+            });
+
+            return responseMsg;
+        }
+
+        [HttpGet]
         [ActionName("getById")]
         public ToDoModel GetById(int id,
              [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
