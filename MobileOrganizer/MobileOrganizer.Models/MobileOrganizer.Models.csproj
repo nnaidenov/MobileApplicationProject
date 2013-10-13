@@ -41,12 +41,13 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Event.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="Resours.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Todo.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Video.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

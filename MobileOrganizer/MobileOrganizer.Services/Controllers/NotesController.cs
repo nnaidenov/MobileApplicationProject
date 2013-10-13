@@ -114,6 +114,11 @@ namespace MobileOrganizer.Services.Controllers
                                   select new ImageModel
                                   {
                                       Path = i.Path
+                                  }),
+                    VideosUrls = (from v in note.VideosUrls
+                                  select new VideoModel
+                                  {
+                                      Path = v.Path
                                   })
                 };
 

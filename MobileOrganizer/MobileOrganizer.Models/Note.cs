@@ -20,9 +20,12 @@ namespace MobileOrganizer.Models
 
         public virtual ICollection<Image> ImagesUrls { get; set; }
 
+        public virtual ICollection<Video> VideosUrls { get; set; }
+
         public Note()
         {
             this.ImagesUrls = new HashSet<Image>();
+            this.VideosUrls = new HashSet<Video>();
         }
     }
 }

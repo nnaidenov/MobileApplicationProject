@@ -12,5 +12,7 @@ namespace MobileOrganizer.Services.Models
         public string Title { get; set; }
 
         public ICollection<string> Images { get; set; }
+
+        public ICollection<string> Videos { get; set; }
     }
 }
