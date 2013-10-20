@@ -31,7 +31,7 @@ namespace MobileOrganizer.Services.Controllers
 
                      if (user != null)
                      {
-                         throw new InvalidOperationException("Invalid Username or Password");
+                         throw new InvalidOperationException("Wrong email.");
                      }
 
                      var newUser = new User

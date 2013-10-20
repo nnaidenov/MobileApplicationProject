@@ -15,7 +15,7 @@ namespace MobileOrganizer.Services.Controllers
     {
         [HttpPost]
         [ActionName("create")]
-        public HttpResponseMessage PostPost(CreateToDoModel model,
+        public HttpResponseMessage TodoCreate(CreateToDoModel model,
              [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {
             var responseMsg = ExecuteOperationOrHandleExceptions(
@@ -104,6 +104,36 @@ namespace MobileOrganizer.Services.Controllers
                      });
 
                 return modelsTodos.ToList();
+            });
+
+            return responseMsg;
+        }
+
+        [HttpGet]
+        [ActionName("groupByDate")]
+        public IQueryable GroupByDate(
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid email or password");
+                }
+
+                var todos = this.Data.Todos.Where(t => t.OwnerId == user.Id);
+
+                var modelsTodos =
+                    (from t in todos
+                     select new TodosCalendarModel
+                     {
+                         Id = t.Id,
+                         Date = t.Date
+                     });
+
+                return modelsTodos.GroupBy(g => g.Date);
             });
 
             return responseMsg;
