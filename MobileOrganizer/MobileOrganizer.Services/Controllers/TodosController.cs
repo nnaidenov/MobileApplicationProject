@@ -124,7 +124,7 @@ namespace MobileOrganizer.Services.Controllers
                 }
 
                 var todos = this.Data.Todos.Where(t => t.OwnerId == user.Id);
-
+                
                 var modelsTodos =
                     (from t in todos
                      select new TodosCalendarModel
