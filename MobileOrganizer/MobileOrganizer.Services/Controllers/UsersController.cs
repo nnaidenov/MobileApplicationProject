@@ -97,6 +97,7 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
+
         [HttpPut]
         [ActionName("logout")]
         public HttpResponseMessage LogoutUser(
@@ -118,6 +119,23 @@ namespace MobileOrganizer.Services.Controllers
                      this.Data.SaveChanges();
 
                      var response = this.Request.CreateResponse(HttpStatusCode.OK);
+
+                     return response;
+                 });
+
+            return responseMsg;
+        }
+
+        [HttpGet]
+        [ActionName("test")]
+        public string test()
+        {
+            var responseMsg = this.ExecuteOperationOrHandleExceptions(
+                 () =>
+                 {
+                    
+
+                     var response = "Get get get get!!!!";
 
                      return response;
                  });
