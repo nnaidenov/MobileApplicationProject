@@ -7,5 +7,8 @@ namespace MobileOrganizer.Services.Models
 {
     public class TestModel
     {
+        public string Name { get; set; }
+
+        public string Age { get; set; }
     }
 }
