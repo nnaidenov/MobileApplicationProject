@@ -128,7 +128,7 @@ namespace MobileOrganizer.Services.Controllers
 
         [HttpGet]
         [ActionName("test")]
-        public HttpResponseMessage test()
+        public HttpResponseMessage Test()
         {
             var responseMsg = this.ExecuteOperationOrHandleExceptions(
                  () =>
