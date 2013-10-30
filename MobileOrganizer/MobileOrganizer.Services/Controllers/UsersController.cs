@@ -128,14 +128,18 @@ namespace MobileOrganizer.Services.Controllers
 
         [HttpGet]
         [ActionName("test")]
-        public string test()
+        public HttpResponseMessage test()
         {
             var responseMsg = this.ExecuteOperationOrHandleExceptions(
                  () =>
                  {
-                    
+                     TestModel tm = new TestModel
+                     {
+                         Name = "name",
+                         Age = "25 age"
+                     };
 
-                     var response = "Get get get get!!!!";
+                     var response = this.Request.CreateResponse(HttpStatusCode.OK, tm);
 
                      return response;
                  });
