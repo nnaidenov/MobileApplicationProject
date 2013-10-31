@@ -168,6 +168,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\TestModel.cs" />
+    <Compile Include="Models\TestNextModel.cs" />
     <Compile Include="Models\TodosCalendarModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Controllers\NotesController.cs" />
