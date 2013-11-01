@@ -125,49 +125,5 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
-
-        [HttpGet]
-        [ActionName("test")]
-        public HttpResponseMessage Test()
-        {
-            var responseMsg = this.ExecuteOperationOrHandleExceptions(
-                 () =>
-                 {
-                     TestModel tm = new TestModel
-                     {
-                         Name = "name",
-                         Age = "25 age"
-                     };
-
-                     var response = this.Request.CreateResponse(HttpStatusCode.OK, tm);
-
-                     return response;
-                 });
-
-            return responseMsg;
-        }
-
-        [HttpPost]
-        [ActionName("testNext")]
-        public HttpResponseMessage TestNext(TestNextModel model)
-        {
-            var responseMsg = this.ExecuteOperationOrHandleExceptions(
-                 () =>
-                 {
-
-
-                     TestModel tm = new TestModel
-                     {
-                         Name = "My name is " + model.Name,
-                         Age = model.Age + " age"
-                     };
-
-                     var response = this.Request.CreateResponse(HttpStatusCode.OK, tm);
-
-                     return response;
-                 });
-
-            return responseMsg;
-        }
     }
 }

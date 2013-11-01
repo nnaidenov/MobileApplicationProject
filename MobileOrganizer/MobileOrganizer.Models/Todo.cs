@@ -18,7 +18,9 @@ namespace MobileOrganizer.Models
 
         public bool IsDone { get; set; }
 
-        public Category Category { get; set; }
+        public int Priority { get; set; }
+
+        public DateTime Reminder { get; set; }
 
         public int OwnerId { get; set; }
 

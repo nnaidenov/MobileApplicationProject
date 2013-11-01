@@ -27,7 +27,6 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-
                 var newToDo = new Todo
                 {
                     Date = model.Date,
@@ -35,7 +34,8 @@ namespace MobileOrganizer.Services.Controllers
                     Owner = user,
                     OwnerId = user.Id,
                     Title = model.Title,
-                    IsDone = false
+                    IsDone = false,
+                    Reminder = model.Reminder
                 };
 
                 this.Data.Todos.Add(newToDo);

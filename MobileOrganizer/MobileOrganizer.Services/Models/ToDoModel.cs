@@ -15,6 +15,8 @@ namespace MobileOrganizer.Services.Models
 
         public bool IsDone { get; set; }
 
+        public string Reminder { get; set; }
+
         public int Id { get; set; }
     }
 }
