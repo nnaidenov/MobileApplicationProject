@@ -34,6 +34,7 @@ namespace MobileOrganizer.Services.Controllers
                     Owner = user,
                     OwnerId = user.Id,
                     Title = model.Title,
+                    Priority = model.Priority,
                     IsDone = false
                 };
 
