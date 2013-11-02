@@ -18,10 +18,7 @@ namespace MobileOrganizer.Services.Models
         [DataMember(Name = "date")]
         public DateTime Date { get; set; }
 
-        [DataMember(Name = "reminder")]
-        public DateTime Reminder { get; set; }
-
         [DataMember(Name = "priority")]
-        public int Priority { get; set; }
+        public string Priority { get; set; }
     }
 }

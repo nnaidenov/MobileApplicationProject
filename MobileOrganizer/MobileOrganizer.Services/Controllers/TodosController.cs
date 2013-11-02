@@ -34,8 +34,7 @@ namespace MobileOrganizer.Services.Controllers
                     Owner = user,
                     OwnerId = user.Id,
                     Title = model.Title,
-                    IsDone = false,
-                    Reminder = model.Reminder
+                    IsDone = false
                 };
 
                 this.Data.Todos.Add(newToDo);
