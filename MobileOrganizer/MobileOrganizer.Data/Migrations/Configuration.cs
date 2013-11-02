@@ -5,7 +5,7 @@ namespace MobileOrganizer.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<MobileOrganizer.Data.OrganizerDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<OrganizerDbContext>
     {
         public Configuration()
         {

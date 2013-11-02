@@ -62,7 +62,7 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate >= DateTime.Now).OrderBy(t => t.Priority);
+                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate >= DateTime.Now);
 
                 var modelsEvents =
                     (from e in events

@@ -20,8 +20,6 @@ namespace MobileOrganizer.Models
 
         public string Priority { get; set; }
 
-        public DateTime Reminder { get; set; }
-
         public int OwnerId { get; set; }
 
         public virtual User Owner { get; set; }

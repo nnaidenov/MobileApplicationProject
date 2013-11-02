@@ -82,7 +82,7 @@ namespace MobileOrganizer.Services.Controllers
                 }
                 DateTime searchDay = new DateTime(year, mounth, day);
                 var todoes = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date == searchDay);
-                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate == searchDay).OrderBy(t => t.Priority);
+                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate == searchDay);
 
                 var modelsTodo =
                     (from t in todoes

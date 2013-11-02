@@ -22,8 +22,6 @@ namespace MobileOrganizer.Models
 
         public bool IsNotifyMode { get; set; }
 
-        public Priority Priority { get; set; }
-
         public int OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
