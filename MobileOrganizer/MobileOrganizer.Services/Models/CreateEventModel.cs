@@ -14,5 +14,7 @@ namespace MobileOrganizer.Services.Models
         public string Description { get; set; }
 
         public string Title { get; set; }
+
+        public DateTime Reminder { get; set; }
     }
 }

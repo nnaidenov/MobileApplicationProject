@@ -18,9 +18,7 @@ namespace MobileOrganizer.Models
 
         public DateTime EndDate { get; set; }
 
-        public bool IsMuteMode { get; set; }
-
-        public bool IsNotifyMode { get; set; }
+        public DateTime Reminder { get; set; }
 
         public int OwnerId { get; set; }
 

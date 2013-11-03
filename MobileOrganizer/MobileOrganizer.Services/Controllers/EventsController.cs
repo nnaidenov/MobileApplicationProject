@@ -34,7 +34,8 @@ namespace MobileOrganizer.Services.Controllers
                     Description = model.Description,
                     Owner = user,
                     OwnerId = user.Id,
-                    Title = model.Title
+                    Title = model.Title,
+                    Reminder = model.Reminder
                 };
 
                 this.Data.Events.Add(newEvent);
