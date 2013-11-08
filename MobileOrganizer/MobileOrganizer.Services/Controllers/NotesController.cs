@@ -27,7 +27,6 @@ namespace MobileOrganizer.Services.Controllers
                     throw new InvalidOperationException("Invalid username or password");
                 }
 
-
                 var newNote = new Note
                 {
                     Owner = user,
