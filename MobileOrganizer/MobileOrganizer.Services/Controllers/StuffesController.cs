@@ -121,5 +121,82 @@ namespace MobileOrganizer.Services.Controllers
 
             return responseMsg;
         }
+
+        [HttpGet]
+        [ActionName("byWeek")]
+        public ICollection<StuffListModel> ByWeek(
+             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = ExecuteOperationOrHandleExceptions(
+            () =>
+            {
+                var user = this.Data.Users.FirstOrDefault(u => u.SessionKey == sessionKey);
+                if (user == null)
+                {
+                    throw new InvalidOperationException("Invalid username or password");
+                }
+
+                DateTime searchDay = DateTime.Now;
+                int day = Convert.ToInt32(searchDay.DayOfWeek);
+                int firstDay = 0;
+
+                while(day > 0) {
+                    firstDay--;
+                    day--;
+                }
+
+                DateTime firstWeekDay = searchDay.AddDays(5);
+               
+
+                var daysAhead = (DayOfWeek.Sunday - (int)searchDay.DayOfWeek);
+
+                firstWeekDay = searchDay.AddDays((int)daysAhead);
+                DateTime lastWeekDay = firstWeekDay.AddDays(7);
+
+
+                var todoes = this.Data.Todos.Where(t => t.OwnerId == user.Id && t.Date >= firstWeekDay && t.Date <= lastWeekDay);
+                var events = this.Data.Events.Where(t => t.OwnerId == user.Id && t.StartDate.Year == searchDay.Year &&
+                    t.StartDate.Month == searchDay.Month && t.StartDate.Day >= firstWeekDay.Day && t.StartDate.Day <= lastWeekDay.Day);
+
+                var modelsTodo =
+                    (from t in todoes
+                     select new StuffListModel
+                     {
+                         Id = t.Id,
+                         Title = t.Title,
+                         Type = "todo",
+                         Date = t.Date
+                     });
+
+                var modelsEvents =
+                    (from e in events
+                     select new StuffListModel
+                     {
+                         Id = e.Id,
+                         Title = e.Title,
+                         Type = "event",
+                         Date = e.StartDate
+                     });
+
+                var stuffes = new List<StuffListModel>();
+
+                foreach (var todo in modelsTodo)
+                {
+                    stuffes.Add(todo);
+                }
+
+                foreach (var eventModel in modelsEvents)
+                {
+                    stuffes.Add(eventModel);
+                }
+
+                return stuffes.OrderBy(s=>s.Date).ToList();
+            });
+
+            return responseMsg;
+        }
     }
+
+
+
 }

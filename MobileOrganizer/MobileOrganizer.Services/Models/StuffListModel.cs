@@ -17,5 +17,8 @@ namespace MobileOrganizer.Services.Models
 
         [DataMember(Name = "id")]
         public int Id { get; set; }
+
+        [DataMember(Name = "date")]
+        public DateTime Date { get; set; }
     }
 }
