@@ -160,6 +160,7 @@ namespace MobileOrganizer.Services.Controllers
                     Id = todo.Id,
                     Title = todo.Title,
                     Description = todo.Description,
+                    Priority = todo.Priority,
                     Date = todo.Date,
                     IsDone = todo.IsDone
                 };

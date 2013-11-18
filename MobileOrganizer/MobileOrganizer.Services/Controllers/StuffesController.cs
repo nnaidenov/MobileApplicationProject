@@ -198,7 +198,7 @@ namespace MobileOrganizer.Services.Controllers
 
         [HttpGet]
         [ActionName("byMonth")]
-        public ICollection<StuffListModel> ByMonth(
+        public ICollection<IGrouping<DateTime, StuffListModel>> ByMonth(
              [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {
             var responseMsg = ExecuteOperationOrHandleExceptions(
@@ -248,7 +248,7 @@ namespace MobileOrganizer.Services.Controllers
                     stuffes.Add(eventModel);
                 }
 
-                return stuffes.OrderBy(s => s.Date).ToList();
+                return stuffes.OrderBy(s => s.Date).GroupBy(ss => ss.Date).ToList();
             });
 
             return responseMsg;

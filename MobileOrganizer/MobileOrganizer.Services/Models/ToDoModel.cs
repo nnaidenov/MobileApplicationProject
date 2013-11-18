@@ -16,5 +16,7 @@ namespace MobileOrganizer.Services.Models
         public bool IsDone { get; set; }
 
         public int Id { get; set; }
+
+        public string Priority { get; set; }
     }
 }
